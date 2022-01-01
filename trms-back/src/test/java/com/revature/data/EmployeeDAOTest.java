@@ -8,34 +8,24 @@ import org.junit.jupiter.api.Test;
 
 import com.revature.beans.Department;
 import com.revature.beans.Employee;
+import com.revature.beans.Role;
 import com.revature.data.postgres.EmployeePostgres;
+import com.revature.data.EmployeeDAO;
 
 
 public class EmployeeDAOTest {
 	private static EmployeeDAO empDAO = new EmployeePostgres();
 	private static Employee mockEmp = new Employee();
-	//private static com.revature.beans.Role role = new Role(null, null);
 	private static Department dept = new Department();
 	private static Employee sup = mockEmp;
 	
-	@BeforeAll
-	public static void mockEmployeeSetup() {// mock bike
-		mockEmp = new Employee();
-		mockEmp.setFirstName("mock");
-		mockEmp.setLastName("mountain");
-		mockEmp.setUsername("Huffy");
-		mockEmp.setPassword("XXL");
-		com.revature.beans.Role role = null;
-		mockEmp.setRole(role);
-		mockEmp.setFunds(1000);
-		mockEmp.setSupervisor(sup);
-		mockEmp.setDepartment(dept);
 	
-	}
 	
 	@Test
 	public void createTest() {
 		Employee emp = new Employee();
+		emp.setSupervisor(empDAO.getById(2));
+		System.out.println(emp.getSupervisor());
 		int genId = empDAO.create(emp);
 		assertNotEquals(0,genId);
 	}
