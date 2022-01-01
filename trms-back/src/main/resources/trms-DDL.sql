@@ -43,9 +43,9 @@ create table event_type (
 
 create table employee (
 	emp_id serial primary key,
-	first_name varchar(30),
-	last_name varchar(30),
-	username varchar(30),
+	first_name varchar(40),
+	last_name varchar(40),
+	username varchar(50),
 	passwd varchar(30),
 	role_id integer not null,
 	funds real not null,
