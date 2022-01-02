@@ -2,6 +2,7 @@ package com.revature.data;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -37,5 +38,23 @@ public class EmployeeDAOTest {
 	}
 	
 	
+	@Test
+	public void getByIdWhenIdDoesNotExist() {
+		int idInput = -1;
+		assertNull(empDAO.getById(idInput));
+	}
+	
+	@Test
+	public void getUsernameWhenUserNameExists() {
+		String user = "auphill5";
+		Employee userOut = empDAO.getByUsername(user);
+		assertEquals(user,userOut.getUsername());
+	}
+	
+	@Test
+	public void getUserNameWhenUserNameDoesNotExist() {
+		String notUser = "alvegrdeeewww";
+		assertNull(empDAO.getByUsername(notUser));
+	}
 	
 }
