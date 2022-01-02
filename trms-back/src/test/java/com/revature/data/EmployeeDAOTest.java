@@ -57,4 +57,20 @@ public class EmployeeDAOTest {
 		assertNull(empDAO.getByUsername(notUser));
 	}
 	
+	@Test
+	public void updateEmployeepassword() {
+		Employee toUpdate = empDAO.getById(40);
+		toUpdate.setPassword("viaerovrh");
+		empDAO.update(toUpdate);
+		assertEquals("viaerovrh",empDAO.getById(40).getPassword());
+	}
+	
+	@Test
+	public void updateEmployeeNotFoundpassword() {
+		Employee toUpdate1 = empDAO.getById(240);
+		toUpdate1.setPassword("viaerovrh");
+		empDAO.update(toUpdate1);
+		assertNull(empDAO.getById(240).getPassword());
+	}
+	
 }
