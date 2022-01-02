@@ -24,8 +24,6 @@ public class EmployeeDAOTest {
 	@Test
 	public void createTest() {
 		Employee emp = new Employee();
-		emp.setSupervisor(empDAO.getById(2));
-		System.out.println(emp.getSupervisor());
 		int genId = empDAO.create(emp);
 		assertNotEquals(0,genId);
 	}
@@ -33,9 +31,9 @@ public class EmployeeDAOTest {
 	
 	@Test
 	public void getByIdWhenIdExists() {
-		int idInput = 1;
+		int idInput = 45;
 		Employee idOutput = empDAO.getById(idInput);
-		assertEquals(1, idOutput.getEmpId());  
+		assertEquals(45, idOutput.getEmpId());  
 	}
 	
 	

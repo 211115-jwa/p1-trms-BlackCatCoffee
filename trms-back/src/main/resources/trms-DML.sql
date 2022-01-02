@@ -1,4 +1,3 @@
-
 insert into status (status_name, approver) 
 values
 	('Approved','Direct Supervisor'),
@@ -28,6 +27,7 @@ values
 	('Research and Developement'),
 	('Engineering'),
 	('shipping'),
+	('Human Resources'),
 	('Information Technology');
 	
 insert into employee (first_name, last_name, username, passwd, role_id, funds) 
@@ -36,10 +36,12 @@ values
 	('Marjy', 'Pinching', 'mpinching1', 'BGzRX4C609', 1, 415),
 	('Mandi', 'Coleson', 'mcoleson2', 'p9tfOL0ny6H4', 1, 946),
 	('Josias', 'Walentynowicz', 'jwalentynowicz3', 'yJsDDa8pqx', 1, 811),
-	('Timmy', 'Sallings', 'tsallings4', 'IjgGvKwo', 3, 466),
+	('Timmy', 'Sallings', 'tsallings4', 'IjgGvKwo', 1, 466),
 	('Andrej', 'Uphill', 'auphill5', 'rpYGyb', 3, 55),
 	('Whit', 'Gerardeaux', 'wgerardeaux6', 'VExIXhmvXh5m', 3, 604),
-	('Bobinette', 'Sille', 'bsille7', 'ActxSbK7KTr', 3, 548);
+	('Bobinette', 'Sille', 'bsille7', 'ActxSbK7KTr', 3, 548),
+	('Clari', 'ORiordan', 'CORiordan', 'IXcecehmvXh5', 3, 874),
+	('Kimberly', 'Cometson', 'KCometson', 'IXhmvXh5', 3, 331);
 	
 select * from employee where role_id=3;
 
@@ -47,76 +49,97 @@ update employee set supervisor_id=1,dept_id=1 where emp_id=1;
 update employee set supervisor_id=2,dept_id=2 where emp_id=2;
 update employee set supervisor_id=3,dept_id=3 where emp_id=3;
 update employee set supervisor_id=4,dept_id=4 where emp_id=4;
+update employee set supervisor_id=5,dept_id=5 where emp_id=5;
+
 
 update department set dept_head_id=1 where dept_id=1;
 update department set dept_head_id=2 where dept_id=2;
 update department set dept_head_id=3 where dept_id=3;
 update department set dept_head_id=4 where dept_id=4;
+update department set dept_head_id=5 where dept_id=5;
 
-update employee set supervisor_id=1,dept_id=1 where emp_id=5;
-update employee set supervisor_id=2,dept_id=2 where emp_id=6;
-update employee set supervisor_id=3,dept_id=3 where emp_id=7;
-update employee set supervisor_id=4,dept_id=4 where emp_id=8;
 
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Clari', 'O''Riordan', 'coriordan0@chicagotribune.com', 'Female', 2, 874, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Kimberly', 'Cometson', 'kcometson1@slate.com', 'Male', 2, 331, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Domeniga', 'Kaszper', 'dkaszper2@usda.gov', 'Female', 2, 91, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Mureil', 'Sabban', 'msabban3@tamu.edu', 'Female', 2, 344, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jehanna', 'Kerkham', 'jkerkham4@webs.com', 'Female', 2, 571, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Doralin', 'Lansberry', 'dlansberry5@springer.com', 'Male', 2, 447, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Veriee', 'Caird', 'vcaird6@51.la', 'Female', 2, 532, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Hillie', 'Gergolet', 'hgergolet7@etsy.com', 'Male', 2, 825, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Daloris', 'Pavie', 'dpavie8@thetimes.co.uk', 'Male', 2, 726, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Waverly', 'Coplestone', 'wcoplestone9@google.de', 'Female', 2, 864, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Matty', 'Dutson', 'mdutsona@gnu.org', 'Female', 2, 865, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Morgan', 'Galtone', 'mgaltoneb@stumbleupon.com', 'Female', 2, 465, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Clim', 'Favell', 'cfavellc@comsenz.com', 'Male', 2, 882, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Fielding', 'Redsall', 'fredsalld@tmall.com', 'Male', 2, 675, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Caroljean', 'Handover', 'chandovere@angelfire.com', 'Female', 2, 449, 5, 1);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Nikolaos', 'Brumpton', 'nbrumpton0@nature.com', 'Polygender', 2, 748, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Coralie', 'Garcia', 'cgarcia1@sitemeter.com', 'Female', 2, 911, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Julianne', 'Canaan', 'jcanaan2@netscape.com', 'Female', 2, 644, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Celinka', 'Rimer', 'crimer3@goodreads.com', 'Genderqueer', 2, 915, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Alayne', 'Dupoy', 'adupoy4@amazon.co.jp', 'Non-binary', 2, 754, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Harrison', 'Breinl', 'hbreinl5@squarespace.com', 'Bigender', 2, 511, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Paco', 'Creffield', 'pcreffield6@etsy.com', 'Female', 2, 815, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Ann-marie', 'Easterfield', 'aeasterfield7@slashdot.org', 'Female', 2, 66, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Galen', 'MacLucais', 'gmaclucais8@lycos.com', 'Male', 2, 88, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Britta', 'Jancic', 'bjancic9@i2i.jp', 'Female', 2, 740, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Alena', 'Iori', 'aioria@slate.com', 'Female', 2, 777, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Mandi', 'De Beneditti', 'mdebenedittib@geocities.jp', 'Non-binary', 2, 604, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Stanfield', 'Sidnall', 'ssidnallc@google.com', 'Male', 2, 46, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Garek', 'Girodias', 'ggirodiasd@cmu.edu', 'Female', 2, 317, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Rowney', 'Gilhooly', 'rgilhoolye@friendfeed.com', 'Male', 2, 421, 6, 2);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Odelle', 'Lorriman', 'olorriman0@usnews.com', 'Female', 2, 424, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Edee', 'Munson', 'emunson1@yahoo.com', 'Female', 2, 863, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Shayne', 'Blachford', 'sblachford2@myspace.com', 'Female', 2, 596, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Helge', 'Holmyard', 'hholmyard3@shareasale.com', 'Male', 2, 502, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Trey', 'Doerr', 'tdoerr4@free.fr', 'Female', 2, 102, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Madelene', 'Fredi', 'mfredi5@about.me', 'Female', 2, 203, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Antonia', 'Garroway', 'agarroway6@gizmodo.com', 'Female', 2, 931, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Noella', 'Passman', 'npassman7@ycombinator.com', 'Female', 2, 378, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Mirilla', 'Brayshaw', 'mbrayshaw8@blogtalkradio.com', 'Male', 2, 163, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Cullin', 'Malby', 'cmalby9@gmpg.org', 'Female', 2, 515, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Paige', 'Yanne', 'pyannea@addtoany.com', 'Male', 2, 623, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Patten', 'Raun', 'praunb@desdev.cn', 'Female', 2, 81, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Tracy', 'Breinl', 'tbreinlc@si.edu', 'Female', 2, 962, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Donnie', 'Coneybeare', 'dconeybeared@i2i.jp', 'Female', 2, 370, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jameson', 'De Bellis', 'jdebellise@mlb.com', 'Male', 2, 454, 7, 3);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Suzanna', 'MacCleay', 'smaccleay0@amazon.de', 'Male', 2, 744, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Emma', 'Mallabone', 'emallabone1@quantcast.com', 'Female', 2, 417, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Dalenna', 'Di Baudi', 'ddibaudi2@pen.io', 'Male', 2, 466, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Dominick', 'Shewery', 'dshewery3@fastcompany.com', 'Male', 2, 700, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Cynthy', 'Jankin', 'cjankin4@163.com', 'Male', 2, 890, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Corny', 'Goldman', 'cgoldman5@hostgator.com', 'Male', 2, 698, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Daniela', 'Hidderley', 'dhidderley6@scientificamerican.com', 'Male', 2, 964, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Davie', 'Oakley', 'doakley7@reference.com', 'Female', 2, 633, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Kendal', 'Redsall', 'kredsall8@digg.com', 'Female', 2, 970, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Gypsy', 'Hunsworth', 'ghunsworth9@admin.ch', 'Male', 2, 490, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jodie', 'Bertot', 'jbertota@sfgate.com', 'Male', 2, 870, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Davina', 'Ure', 'dureb@baidu.com', 'Female', 2, 390, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Lani', 'Chastang', 'lchastangc@prnewswire.com', 'Female', 2, 929, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Timothy', 'Phette', 'tphetted@tripod.com', 'Female', 2, 461, 8, 4);
-insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Bernadette', 'Mattes', 'bmattese@seesaa.net', 'Agender', 2, 679, 8, 4);
+update employee set supervisor_id=1,dept_id=1 where emp_id=6;
+update employee set supervisor_id=2,dept_id=2 where emp_id=7;
+update employee set supervisor_id=3,dept_id=3 where emp_id=8;
+update employee set supervisor_id=4,dept_id=4 where emp_id=9;
+update employee set supervisor_id=5,dept_id=5 where emp_id=10;
+
+
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Kathie', 'Potapczuk', 'kpotapczuk0', 'Dq9PCbwmVQIU', 2, 292, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Erie', 'Fillery', 'efillery1', 'r4qZWN', 2, 780, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Malory', 'Glentz', 'mglentz2', 'JGuxIbWCURUW', 2, 236, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Ysabel', 'McKeller', 'ymckeller3', 'bLoNf32', 2, 269, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Drake', 'Valentetti', 'dvalentetti4', 'hhNwFYUMbmpM', 2, 24, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Adelle', 'Gavaran', 'agavaran5', '4Ctyo2jJZ', 2, 642, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Carlyn', 'Carnegie', 'ccarnegie6', 'g72pdnX2', 2, 696, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Adolf', 'Lahy', 'alahy7', '583t6mQaf', 2, 884, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Layney', 'Othick', 'lothick8', 'TyL7IN', 2, 132, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Carmelle', 'Giveen', 'cgiveen9', '91BTRmeaT', 2, 713, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Marlie', 'Trippick', 'mtrippicka', '0uPQVc', 2, 590, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Della', 'Congrave', 'dcongraveb', 'dMzSKG', 2, 440, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Adrienne', 'Johantges', 'ajohantgesc', '38tkidAJN43', 2, 833, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Marcellus', 'Bromwich', 'mbromwichd', 'YlNYKPU2lYz', 2, 900, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Leslie', 'Brute', 'lbrutee', '6enz2o2q3a8x', 2, 649, 6, 1);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Nannie', 'Widdocks', 'nwiddocks0', 'ELryrfNvxqO', 2, 247, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Tuckie', 'Karmel', 'tkarmel1', 'bNNPomgQ5s', 2, 988, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Cathrin', 'Voyce', 'cvoyce2', 'JPbQnrt0', 2, 883, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Odette', 'Klessmann', 'oklessmann3', 'NweyKuszdVn', 2, 789, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Beitris', 'Ecclestone', 'becclestone4', 'cEbVoqpk', 2, 564, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jsandye', 'McDavitt', 'jmcdavitt5', 'MXWLdWDnf', 2, 431, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Wynn', 'Dreinan', 'wdreinan6', 'SGcrzJBbmc', 2, 689, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Hamlen', 'Stummeyer', 'hstummeyer7', 'hkscil', 2, 61, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Englebert', 'Ivanyukov', 'eivanyukov8', 'XkjGPXf', 2, 473, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Patricio', 'Cracknall', 'pcracknall9', 'eKdsVbpRHE', 2, 920, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jeffry', 'Rushbury', 'jrushburya', 'p9DLBI7fb', 2, 651, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Vic', 'Speere', 'vspeereb', 'mwV6F87vz', 2, 497, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Chantal', 'Martina', 'cmartinac', 'OG4bPXFL6vc', 2, 194, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Rowland', 'Runnett', 'rrunnettd', 'WWeIoalXZrm8', 2, 101, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Odell', 'Milland', 'omillande', 'LPLaJFp', 2, 517, 7, 2);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Nalani', 'Blackall', 'nblackall0', 'Cj0N16Ezfr', 2, 278, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Quent', 'Leachman', 'qleachman1', 'uLK7kK', 2, 727, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jada', 'Lingwood', 'jlingwood2', 'KL7k7aEg6', 2, 209, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Loella', 'Paylor', 'lpaylor3', 'Hi9DddJkWiz', 2, 693, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Lindsey', 'Fessby', 'lfessby4', 'xT22kZ927H', 2, 579, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Carrol', 'Dowsing', 'cdowsing5', 'F29ENFeW5TJ', 2, 191, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Hannah', 'Shambrooke', 'hshambrooke6', 'GyZlWmil', 2, 990, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Valentino', 'Voyce', 'vvoyce7', 'dRV1RItnjnf', 2, 466, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jennica', 'Ferschke', 'jferschke8', '2iQiCzqdhlMt', 2, 771, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Bryan', 'McKechnie', 'bmckechnie9', 'eVGxtv7PTA', 2, 564, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Brenna', 'Radleigh', 'bradleigha', 'gdHLGd', 2, 995, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Delaney', 'Darinton', 'ddarintonb', '7ywj1Pta', 2, 972, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Giulio', 'Pepper', 'gpepperc', 'YKkRNyXVd', 2, 284, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Philip', 'Bodycote', 'pbodycoted', '94g1j1i', 2, 547, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Lazar', 'Keenlayside', 'lkeenlaysidee', 'ZWkiAZ6', 2, 756, 8, 3);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Ronica', 'Kiebes', 'rkiebes0', 'KQnTuPEzYEV6', 2, 742, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Ernestus', 'McComiskie', 'emccomiskie1', 'YdI1p2G', 2, 413, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Leopold', 'Tooke', 'ltooke2', '63togfhzZ501', 2, 262, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Derrick', 'Leyborne', 'dleyborne3', 'qKbKSc3FVz8', 2, 79, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Ludovika', 'Gerssam', 'lgerssam4', 'WF45zGbV', 2, 747, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Aveline', 'Fardo', 'afardo5', '7m2Bg01ygoZ', 2, 574, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Yolanda', 'Bampfield', 'ybampfield6', 'uQZuKJOLvn', 2, 285, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Lorrin', 'Frith', 'lfrith7', 'h1JI3GKXLcE', 2, 596, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Cyndy', 'Whyman', 'cwhyman8', 'WXIDiRqn5t5', 2, 295, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Herbie', 'Naulty', 'hnaulty9', 'gAtuSS', 2, 664, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Eduardo', 'Fumagallo', 'efumagalloa', 'EEqL3YOCkq', 2, 68, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Kipper', 'Balke', 'kbalkeb', 'r5truY', 2, 811, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Alanson', 'Bawcock', 'abawcockc', 'KGhMiBhoG', 2, 658, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Clo', 'Marklund', 'cmarklundd', 'fjUel47q', 2, 710, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Norbert', 'Cars', 'ncarse', 'kyp5JAfEtp', 2, 218, 9, 4);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Nels', 'Trehearne', 'ntrehearne0', 'OC7OsCOsw', 2, 522, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Melinda', 'Romer', 'mromer1', 'u0r1P30kBD', 2, 856, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Riki', 'Lusgdin', 'rlusgdin2', 'PP2pNDGdQPL', 2, 780, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Hubert', 'Nottingam', 'hnottingam3', '7tMOJPLpZ', 2, 670, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Kessia', 'O''Glassane', 'koglassane4', 't192iMe2ciq', 2, 216, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Nessi', 'Colomb', 'ncolomb5', 'IzPOiGviC', 2, 170, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Lyn', 'Slade', 'lslade6', 'tugF0KWi', 2, 729, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Mallorie', 'Rupprecht', 'mrupprecht7', 'vMzaLp', 2, 636, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Melisse', 'Wiggett', 'mwiggett8', 'KvD87seNY', 2, 290, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Elysee', 'Paffitt', 'epaffitt9', 'Ay3HZZmjpt0s', 2, 336, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Garner', 'Iannuzzi', 'giannuzzia', 'zIncZo6', 2, 406, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Mattias', 'Betham', 'mbethamb', 'Q1l2ZrU', 2, 551, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Agnese', 'Heardman', 'aheardmanc', 'REhxiS1hu', 2, 288, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Lowe', 'Mollon', 'lmollond', 'Zq8QCz', 2, 911, 10, 5);
+insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jennie', 'Goodrick', 'jgoodricke', '1RpOB7jOLt7Z', 2, 690, 10, 5);
 
 
