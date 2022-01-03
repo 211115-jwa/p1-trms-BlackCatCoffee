@@ -6,6 +6,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,6 +37,18 @@ public class EmployeeServiceTest {
 	@InjectMocks
 	private EmployeeService empServ = new EmployeeServiceImpl();
 	
+	private static Set<Comment> mockAvailableComments;
+	
+	@BeforeAll
+	public static void mockAvailableCommentsSetup() {
+		mockAvailableComments = new HashSet<>();
+		for (int i=1; i<=5; i++) {
+			Comment comment = new Comment();
+			comment.setCommentId(i);
+			mockAvailableComments.add(comment);
+		}
+	}
+	
 	@Test
 	public void addNewCommentSuccessfully() {
 		Comment comment = new Comment();
@@ -55,10 +71,17 @@ public class EmployeeServiceTest {
 	@Test
 	public void getsubmitReimbursementRequestsuccessfully() {
 		Reimbursement reim = new Reimbursement();
-		when(reqDao.create(reim)).thenReturn(0);
+		when(reqDao.create(reim)).thenReturn(10);
 		int newReim = empServ.submitReimbursementRequest(reim);
 		assertNotEquals(0,newReim);
 	}
 	
+	@Test
+	public void getEmployeeCommentsSuccessfully() {
+		Reimbursement reim = new Reimbursement();
+		when(commentDao.getByRequestId(1)).thenReturn(mockAvailableComments);
+		Set<Comment> actualComments = empServ.getComments(reim);
+		assertEquals(mockAvailableComments,actualComments);
+	}
 	
 }
