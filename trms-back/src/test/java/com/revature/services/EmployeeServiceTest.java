@@ -42,11 +42,18 @@ public class EmployeeServiceTest {
 	@BeforeAll
 	public static void mockAvailableCommentsSetup() {
 		mockAvailableComments = new HashSet<>();
+		Employee emp = new Employee();
+		emp.setEmpId(86);
+		Reimbursement reim = new Reimbursement();
+		reim.setReqId(26);
 		for (int i=1; i<=5; i++) {
 			Comment comment = new Comment();
 			comment.setCommentId(i);
+			comment.setApprover(emp);
+			comment.setRequest(reim);
 			mockAvailableComments.add(comment);
 		}
+		
 	}
 	
 	@Test
@@ -79,7 +86,8 @@ public class EmployeeServiceTest {
 	@Test
 	public void getEmployeeCommentsSuccessfully() {
 		Reimbursement reim = new Reimbursement();
-		when(commentDao.getByRequestId(1)).thenReturn(mockAvailableComments);
+		reim.setReqId(26);
+		when(commentDao.getByRequestId(reim.getReqId())).thenReturn(mockAvailableComments);
 		Set<Comment> actualComments = empServ.getComments(reim);
 		assertEquals(mockAvailableComments,actualComments);
 	}
