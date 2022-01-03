@@ -179,4 +179,29 @@ insert into reimbursement (emp_id, event_date, event_time, location, description
 insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (67, '1/20/2021', '11:15 PM', '54684 Pennsylvania Place', 'pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in', 795.73, 2, 1, 1);
 insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (48, '1/2/2021', '12:51 AM', '3439 Luster Junction', 'ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id', 235.05, 2, 6, 7);
 
+insert into comment (req_id, approver_id, comment_text, sent_at) values (1, 5, 'Gorilla gorilla', '5/30/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (2, 1, 'Taxidea taxus', '7/20/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (3, 2, 'Acrantophis madagascariensis', '12/23/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (4, 4, 'Oreotragus oreotragus', '4/19/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (5, 3, 'Macropus eugenii', '2/1/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (6, 2, 'Bradypus tridactylus', '2/3/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (7, 1, 'unavailable', '1/5/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (8, 1, 'Cebus nigrivittatus', '8/7/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (9, 5, 'Papio cynocephalus', '7/2/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (10, 3, 'Ara ararauna', '2/24/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (11, 6, 'Hystrix indica', '3/19/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (12, 1, 'Priodontes maximus', '7/16/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (13, 6, 'Neophron percnopterus', '12/31/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (14, 2, 'Nucifraga columbiana', '3/23/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (15, 6, 'Choloepus hoffmani', '10/25/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (16, 4, 'Orcinus orca', '3/13/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (17, 5, 'Parus atricapillus', '10/7/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (18, 1, 'Speothos vanaticus', '11/28/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (19, 4, 'Isoodon obesulus', '10/27/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (20, 3, 'Ardea cinerea', '4/29/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (21, 3, 'Acridotheres tristis', '4/5/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (22, 1, 'Gopherus agassizii', '1/5/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (23, 4, 'Grus antigone', '5/25/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (24, 5, 'Martes americana', '7/13/2021');
+insert into comment (req_id, approver_id, comment_text, sent_at) values (25, 2, 'Castor canadensis', '10/11/2021');
 
