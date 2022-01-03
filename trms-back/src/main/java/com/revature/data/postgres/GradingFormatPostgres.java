@@ -84,21 +84,23 @@ public class GradingFormatPostgres implements GradingFormatDAO {
 	}
 
 	@Override
-	public int create(GradingFormat dataToAdd) {
+	public int create(Object dataToAdd) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public void update(GradingFormat dataToUpdate) {
+	public void update(Object dataToUpdate) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void delete(GradingFormat dataToDelete) {
+	public void delete(Object dataToDelete) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }
