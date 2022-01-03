@@ -18,8 +18,12 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.revature.beans.Comment;
+import com.revature.beans.Department;
 import com.revature.beans.Employee;
+import com.revature.beans.EventType;
+import com.revature.beans.GradingFormat;
 import com.revature.beans.Reimbursement;
+import com.revature.beans.Status;
 import com.revature.data.CommentDAO;
 import com.revature.data.EmployeeDAO;
 import com.revature.data.ReimbursementDAO;
@@ -38,6 +42,7 @@ public class EmployeeServiceTest {
 	private EmployeeService empServ = new EmployeeServiceImpl();
 	
 	private static Set<Comment> mockAvailableComments;
+	private static Set<Reimbursement> mockAvailableRequests;
 	
 	@BeforeAll
 	public static void mockAvailableCommentsSetup() {
@@ -52,6 +57,26 @@ public class EmployeeServiceTest {
 			comment.setApprover(emp);
 			comment.setRequest(reim);
 			mockAvailableComments.add(comment);
+		}
+		
+	}
+	
+	@BeforeAll
+	public static void mockAvailableRequestsSetup() {
+		mockAvailableRequests = new HashSet<>();
+		Employee emp = new Employee();
+		GradingFormat gf = new GradingFormat();
+		EventType et = new EventType();
+		Status state = new Status();
+		emp.setEmpId(87);
+		
+		for (int i=1; i<=5; i++) {
+			Reimbursement reim = new Reimbursement();
+			reim.setRequestor(emp);
+			reim.setGradingFormat(gf);
+			reim.setEventType(et);
+			reim.setStatus(state);
+			mockAvailableRequests.add(reim);
 		}
 		
 	}
@@ -90,6 +115,15 @@ public class EmployeeServiceTest {
 		when(commentDao.getByRequestId(reim.getReqId())).thenReturn(mockAvailableComments);
 		Set<Comment> actualComments = empServ.getComments(reim);
 		assertEquals(mockAvailableComments,actualComments);
+	}
+	
+	@Test
+	public void getReimbursementRequestsSuccessfully() {
+		Employee requestor = new Employee();
+		requestor.setEmpId(87);
+		when(reqDao.getByRequestor(requestor)).thenReturn(mockAvailableRequests);
+		Set<Reimbursement> actualReimbursements = empServ.getReimbursementRequests(requestor);
+		assertEquals(mockAvailableRequests,actualReimbursements);
 	}
 	
 }
