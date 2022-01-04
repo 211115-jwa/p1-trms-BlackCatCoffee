@@ -3,9 +3,12 @@ package com.revature.services;
 import java.util.Set;
 
 import com.revature.beans.Comment;
+import com.revature.beans.Department;
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.beans.Status;
 import com.revature.data.CommentDAO;
+import com.revature.data.DepartmentDAO;
 import com.revature.data.EmployeeDAO;
 import com.revature.data.EventTypeDAO;
 import com.revature.data.GradingFormatDAO;
@@ -20,11 +23,16 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 	private ReimbursementDAO reqDao = DAOFactory.getReimbursementDAO();
 	private CommentDAO commentDao = DAOFactory.getCommentDAO();
 	private EmployeeDAO empDao = DAOFactory.getEmployeeDAO();
+	private DepartmentDAO deptDao = DAOFactory.getDepartmentDAO();
 	
 	
 	@Override
 	public Set<Reimbursement> getPendingReimbursements(Employee approver) {
-		// TODO Auto-generated method stub
+		Set<Status> pendingStatus = statusDao.getByName("Pending Approval"));
+		pendingStatus.forEach(pending -> {
+			if(pending.getApprover().equals(approver));
+		});
+	
 		return null;
 	}
 

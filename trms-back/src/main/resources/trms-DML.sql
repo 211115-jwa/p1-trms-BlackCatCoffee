@@ -14,7 +14,8 @@ insert into user_role (role_name)
 values
 	('Department Head'),
 	('Employee'),
-	('Direct Supervisor');
+	('Direct Supervisor'),
+	('BenCo representative');
 	
 insert into grading_format (format_id, format_name, example)
 values

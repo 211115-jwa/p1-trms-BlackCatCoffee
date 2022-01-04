@@ -7,6 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -26,6 +27,8 @@ import com.revature.beans.Reimbursement;
 import com.revature.beans.Status;
 import com.revature.data.CommentDAO;
 import com.revature.data.EmployeeDAO;
+import com.revature.data.EventTypeDAO;
+import com.revature.data.GradingFormatDAO;
 import com.revature.data.ReimbursementDAO;
 import com.revature.utils.DAOFactory;
 
@@ -37,12 +40,18 @@ public class EmployeeServiceTest {
 	private EmployeeDAO empDao;
 	@Mock
 	private ReimbursementDAO reqDao;
+	@Mock
+	private EventTypeDAO eventTypeDao;
+	@Mock
+	private GradingFormatDAO gradFormatDao;
 	
 	@InjectMocks
 	private EmployeeService empServ = new EmployeeServiceImpl();
 	
 	private static Set<Comment> mockAvailableComments;
 	private static Set<Reimbursement> mockAvailableRequests;
+	private static Set<Object> mockEventTypes;
+	private static Set<Object> mockGradingFormat;
 	
 	@BeforeAll
 	public static void mockAvailableCommentsSetup() {
@@ -79,6 +88,24 @@ public class EmployeeServiceTest {
 			mockAvailableRequests.add(reim);
 		}
 		
+	}
+	
+	@BeforeAll
+	public static void mockEventTypes() {
+		mockEventTypes = new HashSet<>();
+		for (int i=1;i<=5;i++) {
+			EventType eventType = new EventType();
+			mockEventTypes.add(eventType);
+		}
+	}
+	
+	@BeforeAll
+	public static void mockGradingFormats() {
+		mockGradingFormat = new HashSet<>();
+		for (int i=1;i<=5;i++) {
+			GradingFormat gf = new GradingFormat();
+			mockGradingFormat.add(gf);
+		}
 	}
 	
 	@Test
@@ -124,6 +151,16 @@ public class EmployeeServiceTest {
 		when(reqDao.getByRequestor(requestor)).thenReturn(mockAvailableRequests);
 		Set<Reimbursement> actualReimbursements = empServ.getReimbursementRequests(requestor);
 		assertEquals(mockAvailableRequests,actualReimbursements);
+	}
+	
+	@Test
+	public void getRequestOptionsSuccessfully() {
+		
+		when(eventTypeDao.getAll()).thenReturn(mockEventTypes);
+		when(gradFormatDao.getAll()).thenReturn(mockGradingFormat);
+		Map<String, Set<Object>> actualRequestOptions = empServ.getRequestOptions();
+		assertNotNull(actualRequestOptions);
+		
 	}
 	
 }
