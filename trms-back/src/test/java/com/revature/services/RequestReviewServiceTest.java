@@ -55,16 +55,15 @@ public class RequestReviewServiceTest {
 	}
 	
 	@Test
-	public void getPendingReimbursementsDeptHead() {
+	public void getPendingReimbursementsBenco() {
 		Employee emp = new Employee();
 		Role role = new Role();
 		Status status = new Status();
-		role.setRoleId(1);
+		role.setRoleId(4);
 		emp.setRole(role);
-		status.setStatusId(4);
-		when(statusDao.getById(4)).thenReturn(status);
+		status.setStatusId(6);
 		when(reqDao.getByStatus(status)).thenReturn(mockPendingReimbursements);
-		Set<Reimbursement> acutalReimbursements = reqRevServ.getPendingReimbursements(emp);
+		Set<Reimbursement> acutalReimbursements = reqDao.getByStatus(status);
 		assertEquals(mockPendingReimbursements,acutalReimbursements);
 	}
 	

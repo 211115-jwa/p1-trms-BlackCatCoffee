@@ -52,6 +52,7 @@ values
 	('Bobinette', 'Sille', 'bsille7', 'ActxSbK7KTr', 3, 548),
 	('Clari', 'ORiordan', 'CORiordan', 'IXcecehmvXh5', 3, 874),
 	('Kimberly', 'Cometson', 'KCometson', 'IXhmvXh5', 3, 331);
+	('Ben', 'company', 'BenCo', 'IXhfefemvXh5', 4, 331);
 	
 select * from employee where role_id=3;
 
