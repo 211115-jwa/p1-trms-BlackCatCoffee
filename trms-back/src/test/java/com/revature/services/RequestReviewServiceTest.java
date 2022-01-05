@@ -67,4 +67,30 @@ public class RequestReviewServiceTest {
 		assertEquals(mockPendingReimbursements,acutalReimbursements);
 	}
 	
+	@Test
+	public void getPendingReimbursementsDeptHead() {
+		Employee emp = new Employee();
+		Role role = new Role();
+		Status status = new Status();
+		role.setRoleId(1);
+		emp.setRole(role);
+		status.setStatusId(5);
+		when(reqDao.getByStatus(status)).thenReturn(mockPendingReimbursements);
+		Set<Reimbursement> acutalReimbursements = reqDao.getByStatus(status);
+		assertEquals(mockPendingReimbursements,acutalReimbursements);
+	}
+	
+	@Test
+	public void getPendingReimbursementsDirSuper() {
+		Employee emp = new Employee();
+		Role role = new Role();
+		Status status = new Status();
+		role.setRoleId(3);
+		emp.setRole(role);
+		status.setStatusId(4);
+		when(reqDao.getByStatus(status)).thenReturn(mockPendingReimbursements);
+		Set<Reimbursement> acutalReimbursements = reqDao.getByStatus(status);
+		assertEquals(mockPendingReimbursements,acutalReimbursements);
+	}
+	
 }
