@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.revature.beans.Comment;
@@ -28,12 +29,19 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 	
 	@Override
 	public Set<Reimbursement> getPendingReimbursements(Employee approver) {
-		Set<Status> pendingStatus = statusDao.getByName("Pending Approval"));
-		pendingStatus.forEach(pending -> {
-			if(pending.getApprover().equals(approver));
-		});
-	
-		return null;
+		Status status = new Status();
+		
+		if (approver.getRole().equals("BenCo representative")) {
+			status = statusDao.getById(6);
+		}else if(approver.getRole().equals("Department Head")) {
+			status = statusDao.getById(5);
+		}else if(approver.getRole().equals("Direct Supervisor")) {
+			status = statusDao.getById(4);
+		}else {
+			return null;
+		}
+		Set<Reimbursement> pendingReimbursements = reqDao.getByStatus(status);
+		return pendingReimbursements;
 	}
 
 	@Override
