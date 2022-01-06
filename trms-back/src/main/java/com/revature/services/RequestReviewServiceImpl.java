@@ -1,5 +1,8 @@
 package com.revature.services;
 
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +30,7 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 	private DepartmentDAO deptDao = DAOFactory.getDepartmentDAO();
 	
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@Override
 	public Set<Reimbursement> getPendingReimbursements(Employee approver) {
 		Status status = new Status();
@@ -46,13 +50,30 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 
 	@Override
 	public void approveRequest(Reimbursement request) {
-		// TODO Auto-generated method stub
+		LocalDate date = LocalDate.now();
+		Status status = request.getStatus();
+		if (status.equals(statusDao.getById(4))) {
+			status.setStatusId(5);
+		}else if (status.equals(statusDao.getById(5))) {
+			status.setStatusId(6);
+		}else if (status.equals(statusDao.getById(6))) {
+			status.setStatusId(3);
+		}
+		request.setStatus(status);
 
 	}
 
 	@Override
 	public void rejectRequest(Reimbursement request) {
-		// TODO Auto-generated method stub
+		Status status = request.getStatus();
+		if (status.equals(statusDao.getById(4))) {
+			status.setStatusId(7);
+		}else if (status.equals(statusDao.getById(5))) {
+			status.setStatusId(8);
+		}else if (status.equals(statusDao.getById(6))) {
+			status.setStatusId(9);
+		}
+		request.setStatus(status);
 
 	}
 

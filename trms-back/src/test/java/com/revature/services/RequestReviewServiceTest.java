@@ -93,4 +93,17 @@ public class RequestReviewServiceTest {
 		assertEquals(mockPendingReimbursements,acutalReimbursements);
 	}
 	
+	/*@Test
+	public void approveRequestSuccessfully() {
+		Reimbursement reimstate = new Reimbursement();
+		Status status = new Status();
+		status.setStatusId(5);
+		reimstate.setStatus(status);
+		when(statusDao.getById(4)).thenReturn(status);
+		Reimbursement actualreim = reimstate.setStatus(status);
+		assertNotEquals(reimstate,actualreim)
+	
+		
+	}*/
+	
 }
