@@ -5,8 +5,11 @@ import java.util.Set;
 import com.revature.beans.Comment;
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.exceptions.IncorrectCredentialsException;
 
 public interface RequestReviewService {
+	
+	public Employee logIn(String username, String password) throws IncorrectCredentialsException;;
 	/**
 	 * Returns the Set of reimbursement requests that are
 	 * currently pending approval from the specified Employee.

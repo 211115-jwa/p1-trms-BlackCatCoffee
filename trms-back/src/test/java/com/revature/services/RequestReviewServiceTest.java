@@ -24,6 +24,7 @@ import com.revature.data.EventTypeDAO;
 import com.revature.data.GradingFormatDAO;
 import com.revature.data.ReimbursementDAO;
 import com.revature.data.StatusDAO;
+import com.revature.exceptions.IncorrectCredentialsException;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -52,6 +53,18 @@ public class RequestReviewServiceTest {
 			Reimbursement reim = new Reimbursement();
 			mockPendingReimbursements.add(reim);
 		}
+	}
+	
+	@Test
+	public void logInSuccessfully() throws IncorrectCredentialsException {
+		String username = "funguy";
+		String password = "pass";
+		Employee mockEmp = new Employee();
+		mockEmp.setUsername(username);
+		mockEmp.setPassword(password);
+		when(empDao.getByUsername(username)).thenReturn(mockEmp);
+		Employee actualEmp = reqRevServ.logIn(username, password);
+		assertEquals(mockEmp,actualEmp);
 	}
 	
 	@Test

@@ -18,6 +18,7 @@ import com.revature.data.EventTypeDAO;
 import com.revature.data.GradingFormatDAO;
 import com.revature.data.ReimbursementDAO;
 import com.revature.data.StatusDAO;
+import com.revature.exceptions.IncorrectCredentialsException;
 import com.revature.utils.DAOFactory;
 
 public class RequestReviewServiceImpl implements RequestReviewService {
@@ -28,6 +29,8 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 	private CommentDAO commentDao = DAOFactory.getCommentDAO();
 	private EmployeeDAO empDao = DAOFactory.getEmployeeDAO();
 	private DepartmentDAO deptDao = DAOFactory.getDepartmentDAO();
+	
+	
 	
 	
 	@SuppressWarnings("unlikely-arg-type")
@@ -81,6 +84,18 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 	public void rejectRequest(Reimbursement request, Comment comment) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Employee logIn(String username, String password) throws IncorrectCredentialsException {
+		Employee empFromDatabase = empDao.getByUsername(username);
+		if(empFromDatabase != null && empFromDatabase.getPassword().equals(password)) {
+			return empFromDatabase;
+		}else {
+			throw new IncorrectCredentialsException();
+			
+		}
+		
 	}
 
 }

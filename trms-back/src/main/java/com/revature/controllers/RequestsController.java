@@ -1,17 +1,36 @@
 package com.revature.controllers;
 
+import java.util.Map;
+
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.exceptions.IncorrectCredentialsException;
 import com.revature.services.EmployeeService;
 import com.revature.services.EmployeeServiceImpl;
+import com.revature.services.RequestReviewService;
+import com.revature.services.RequestReviewServiceImpl;
 
 import io.javalin.http.Context;
 import io.javalin.http.HttpCode;
 
 public class RequestsController {
 	private static EmployeeService empServ = new EmployeeServiceImpl();
+	private static RequestReviewService reqRevServ = new RequestReviewServiceImpl();
 
-	
+	public static void logIn(Context ctx) {
+		Map<String,String> credentials = ctx.bodyAsClass(Map.class);
+		String username = credentials.get("username");
+		String password = credentials.get("password");
+		
+		try {
+			Employee emp = reqRevServ.logIn(username, password);
+			String token = Integer.toString(emp.getEmpId());
+			ctx.result(token);
+		}catch (IncorrectCredentialsException e) {
+			ctx.status(404);
+			ctx.result(e.getMessage());
+		}
+	}
 	/**
 	 * Retrieves the submitted reimbursement request from the
 	 * HTTP request body and sends it to be inserted in the database.
