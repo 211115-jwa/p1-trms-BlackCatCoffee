@@ -73,8 +73,7 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 	public Reimbursement getById(int id) {
 		Reimbursement request = null;
 		try (Connection conn = connUtil.getConnection()) {
-			String sql="select" + 
-					" req_id," + 
+			String sql="select req_id," +  
 					" emp_id," + 
 					" event_date," + 
 					" event_time," + 
@@ -103,7 +102,7 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 			while (resultSet.next()) {
 				request = new Reimbursement();
 				request.setReqId(resultSet.getInt("req_id"));
-				request.getRequestor().setEmpId(resultSet.getInt("emp_id"));
+				request.setRequestor(request.getRequestor());
 				request.setEventDate(resultSet.getDate("event_date").toLocalDate());
 				request.setEventTime(resultSet.getTime("event_time").toLocalTime());
 				request.setLocation(resultSet.getString("location"));
@@ -153,7 +152,7 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 					" r.status_id," + 
 					" status_name," + 
 					" approver," + 
-					" submitted_at " + 
+					" submitted_at" + 
 					" from reimbursement r" + 
 					" join grading_format gf on r.grading_format_id=gf.format_id" + 
 					" join event_type et on r.event_type_id=et.type_id" + 

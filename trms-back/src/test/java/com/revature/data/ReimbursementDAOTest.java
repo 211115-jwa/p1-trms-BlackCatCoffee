@@ -33,4 +33,12 @@ public class ReimbursementDAOTest {
 		System.out.println(reim.getReqId());
 		assertNotEquals(0,generatedId);
 	}
+	
+	@Test
+	public void getByIdTest() {
+		int idInput = 2;
+		Reimbursement reimOutput = reqDao.getById(idInput);
+		System.out.println(reimOutput.getReqId());
+		assertEquals(2,reimOutput.getReqId());
+	}
 }
