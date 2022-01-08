@@ -86,16 +86,6 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 
 	}
 
-	@Override
-	public Employee logIn(String username, String password) throws IncorrectCredentialsException {
-		Employee empFromDatabase = empDao.getByUsername(username);
-		if(empFromDatabase != null && empFromDatabase.getPassword().equals(password)) {
-			return empFromDatabase;
-		}else {
-			throw new IncorrectCredentialsException();
-			
-		}
-		
-	}
+	
 
 }

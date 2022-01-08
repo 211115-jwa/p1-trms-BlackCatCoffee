@@ -9,7 +9,7 @@ import com.revature.exceptions.IncorrectCredentialsException;
 
 public interface RequestReviewService {
 	
-	public Employee logIn(String username, String password) throws IncorrectCredentialsException;;
+	public Employee logIn(String username, String password) ;;
 	/**
 	 * Returns the Set of reimbursement requests that are
 	 * currently pending approval from the specified Employee.
@@ -60,4 +60,5 @@ public interface RequestReviewService {
 	 * @param request the request to be rejected
 	 */
 	public void rejectRequest(Reimbursement request, Comment comment);
+	
 }

@@ -6,9 +6,11 @@ import java.util.Map;
 import com.revature.beans.Comment;
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.exceptions.IncorrectCredentialsException;
 
 public interface EmployeeService {
-
+	public Employee register(Employee newEmp);
+	public Employee logIn(String username, String password) throws IncorrectCredentialsException;
 	/**
 	 * Returns a Map that provides the possible options that an Employee
 	 * can choose to enter for the EventType and GradingFormat fields of
@@ -68,4 +70,5 @@ public interface EmployeeService {
 	 * @return the specified employee
 	 */
 	public Employee getEmployeeById(int empId);
+	
 }

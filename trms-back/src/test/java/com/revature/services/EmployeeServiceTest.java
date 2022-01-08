@@ -1,5 +1,6 @@
 package com.revature.services;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
@@ -30,6 +31,7 @@ import com.revature.data.EmployeeDAO;
 import com.revature.data.EventTypeDAO;
 import com.revature.data.GradingFormatDAO;
 import com.revature.data.ReimbursementDAO;
+import com.revature.exceptions.IncorrectCredentialsException;
 import com.revature.utils.DAOFactory;
 
 @ExtendWith(MockitoExtension.class)
@@ -106,6 +108,18 @@ public class EmployeeServiceTest {
 			GradingFormat gf = new GradingFormat();
 			mockGradingFormat.add(gf);
 		}
+	}
+	
+	@Test
+	public void logInSuccessfully() throws IncorrectCredentialsException {
+		String username = "funguy";
+		String password = "pass";
+		Employee mockEmp = new Employee();
+		mockEmp.setUsername(username);
+		mockEmp.setPassword(password);
+		when(empDao.getByUsername(username)).thenReturn(mockEmp);
+		Employee actualEmp = empServ.logIn(username, password);
+		assertEquals(mockEmp,actualEmp);
 	}
 	
 	@Test

@@ -1,9 +1,12 @@
 package com.revature.controllers;
 
 import java.util.Map;
+import java.util.Set;
 
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
+import com.revature.beans.Role;
+import com.revature.beans.Status;
 import com.revature.exceptions.IncorrectCredentialsException;
 import com.revature.services.EmployeeService;
 import com.revature.services.EmployeeServiceImpl;
@@ -17,20 +20,6 @@ public class RequestsController {
 	private static EmployeeService empServ = new EmployeeServiceImpl();
 	private static RequestReviewService reqRevServ = new RequestReviewServiceImpl();
 
-	public static void logIn(Context ctx) {
-		Map<String,String> credentials = ctx.bodyAsClass(Map.class);
-		String username = credentials.get("username");
-		String password = credentials.get("password");
-		
-		try {
-			Employee emp = reqRevServ.logIn(username, password);
-			String token = Integer.toString(emp.getEmpId());
-			ctx.result(token);
-		}catch (IncorrectCredentialsException e) {
-			ctx.status(404);
-			ctx.result(e.getMessage());
-		}
-	}
 	/**
 	 * Retrieves the submitted reimbursement request from the
 	 * HTTP request body and sends it to be inserted in the database.
@@ -94,6 +83,17 @@ public class RequestsController {
 		} catch (NumberFormatException e) {
 			ctx.status(400);
 			ctx.result("Requestor ID must be an integer. Please try again.");
+		}
+	}
+	
+	public static void getPendingRequestsByApprover(Context ctx) {
+		Employee emp = ctx.bodyAsClass(Employee.class);
+		if(emp != null) {
+			Set<Reimbursement> pendingRequests = reqRevServ.getPendingReimbursements(emp);
+			ctx.json(pendingRequests);
+		}else {
+			ctx.status(404);
+			ctx.result("Invalid access");
 		}
 	}
 }

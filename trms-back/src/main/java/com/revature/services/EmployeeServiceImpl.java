@@ -15,6 +15,7 @@ import com.revature.data.EventTypeDAO;
 import com.revature.data.GradingFormatDAO;
 import com.revature.data.ReimbursementDAO;
 import com.revature.data.StatusDAO;
+import com.revature.exceptions.IncorrectCredentialsException;
 import com.revature.utils.DAOFactory;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -69,6 +70,24 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee getEmployeeById(int empId) {
 		return empDao.getById(empId);
+	}
+
+	@Override
+	public Employee register(Employee newEmp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee logIn(String username, String password) throws IncorrectCredentialsException {
+		Employee empFromDatabase = empDao.getByUsername(username);
+		if(empFromDatabase != null && empFromDatabase.getPassword().equals(password)) {
+			return empFromDatabase;
+		}else {
+			throw new IncorrectCredentialsException();
+			
+		}
+		
 	}
 
 }

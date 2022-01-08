@@ -55,17 +55,7 @@ public class RequestReviewServiceTest {
 		}
 	}
 	
-	@Test
-	public void logInSuccessfully() throws IncorrectCredentialsException {
-		String username = "funguy";
-		String password = "pass";
-		Employee mockEmp = new Employee();
-		mockEmp.setUsername(username);
-		mockEmp.setPassword(password);
-		when(empDao.getByUsername(username)).thenReturn(mockEmp);
-		Employee actualEmp = reqRevServ.logIn(username, password);
-		assertEquals(mockEmp,actualEmp);
-	}
+	
 	
 	@Test
 	public void getPendingReimbursementsBenco() {
