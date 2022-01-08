@@ -21,8 +21,8 @@ public class Reimbursement {
 	public Reimbursement() {
 		reqId=0;
 		requestor=null;
-		eventDate=null;
-		eventTime=null;
+		eventDate=LocalDate.parse("2023-12-03");
+		eventTime= LocalTime.now();
 		location="";
 		description="";
 		cost=0.0;

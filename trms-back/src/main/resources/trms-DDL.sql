@@ -56,8 +56,8 @@ create table employee (
 create table reimbursement (
 	req_id serial primary key,
 	emp_id integer not null,
-	event_date date not null,
-	event_time time not null,
+	event_date date,
+	event_time time,
 	location varchar(100),
 	description varchar(250),
 	cost real not null,

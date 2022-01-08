@@ -1,13 +1,10 @@
 package com.revature.controllers;
 
-import java.util.Map;
+
 import java.util.Set;
 
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
-import com.revature.beans.Role;
-import com.revature.beans.Status;
-import com.revature.exceptions.IncorrectCredentialsException;
 import com.revature.services.EmployeeService;
 import com.revature.services.EmployeeServiceImpl;
 import com.revature.services.RequestReviewService;
@@ -36,8 +33,18 @@ public class RequestsController {
 	 * 
 	 * @param ctx Javalin's Context object representing the HTTP request and response
 	 */
+	
 	public static void submitReimbursementRequest(Context ctx) {
 		Reimbursement request = ctx.bodyAsClass(Reimbursement.class);
+		int eventDate = request.getEventDate().getDayOfYear();
+		int requestDate = request.getSubmittedAt().getDayOfYear();
+		if(eventDate-requestDate<7) {
+			ctx.status(400);
+			ctx.result("your request is past required submission time buffer");
+		}else if (request.getCost()>1000.00) {
+			ctx.status(400);
+			ctx.result("your request is over the $1000 limit");
+		}
 		int reqId = empServ.submitReimbursementRequest(request);
 		if (reqId != 0) {
 			ctx.status(HttpCode.CREATED);

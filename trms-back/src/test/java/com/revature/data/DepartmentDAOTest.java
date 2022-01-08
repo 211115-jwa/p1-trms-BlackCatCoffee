@@ -1,5 +1,7 @@
 package com.revature.data;
 
-public class DepartmentDAOTest {
+import com.revature.beans.Department;
 
+public class DepartmentDAOTest {
+	private static Department dept = new Department();
 }

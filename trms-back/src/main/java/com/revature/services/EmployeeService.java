@@ -7,9 +7,10 @@ import com.revature.beans.Comment;
 import com.revature.beans.Employee;
 import com.revature.beans.Reimbursement;
 import com.revature.exceptions.IncorrectCredentialsException;
+import com.revature.exceptions.UsernameAlreadyExistsException;
 
 public interface EmployeeService {
-	public Employee register(Employee newEmp);
+	public Employee register(Employee newEmp)throws UsernameAlreadyExistsException;
 	public Employee logIn(String username, String password) throws IncorrectCredentialsException;
 	/**
 	 * Returns a Map that provides the possible options that an Employee

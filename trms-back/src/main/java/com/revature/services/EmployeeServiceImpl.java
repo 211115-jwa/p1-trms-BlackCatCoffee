@@ -16,6 +16,7 @@ import com.revature.data.GradingFormatDAO;
 import com.revature.data.ReimbursementDAO;
 import com.revature.data.StatusDAO;
 import com.revature.exceptions.IncorrectCredentialsException;
+import com.revature.exceptions.UsernameAlreadyExistsException;
 import com.revature.utils.DAOFactory;
 
 public class EmployeeServiceImpl implements EmployeeService {
@@ -73,8 +74,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee register(Employee newEmp) {
-		// TODO Auto-generated method stub
+	public Employee register(Employee newEmp) throws UsernameAlreadyExistsException{
+		int newId = empDao.create(newEmp);
+		if (newId>0) {
+			newEmp.setEmpId(newId);
+			return newEmp;
+		}else if (newId == -1) {
+			throw new UsernameAlreadyExistsException();
+		}
 		return null;
 	}
 

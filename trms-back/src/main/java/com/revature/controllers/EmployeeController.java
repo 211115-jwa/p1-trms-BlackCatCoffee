@@ -1,9 +1,11 @@
 package com.revature.controllers;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.revature.beans.Employee;
 import com.revature.exceptions.IncorrectCredentialsException;
+import com.revature.exceptions.UsernameAlreadyExistsException;
 import com.revature.services.EmployeeService;
 import com.revature.services.EmployeeServiceImpl;
 import com.revature.services.RequestReviewService;
@@ -16,6 +18,19 @@ public class EmployeeController {
 	private static EmployeeService empServ = new EmployeeServiceImpl();
 	private static RequestReviewService reqRevServ = new RequestReviewServiceImpl();
 	
+	public static void register(Context ctx) {
+		Employee newEmp = ctx.bodyAsClass(Employee.class);
+		try {
+			newEmp = empServ.register(newEmp);
+			Map<String,Integer> newIdMap = new HashMap<>();
+			newIdMap.put("empId", newEmp.getEmpId());
+			ctx.status(HttpCode.CREATED);
+			ctx.json(newIdMap);
+		}catch (UsernameAlreadyExistsException e) {
+			ctx.status(409);
+			ctx.result(e.getMessage());
+		}
+	}
 	
 	public static void logIn(Context ctx) {
 		Map<String,String> credentials = ctx.bodyAsClass(Map.class);
@@ -26,7 +41,7 @@ public class EmployeeController {
 			Employee emp = reqRevServ.logIn(username, password);
 			String token = Integer.toString(emp.getEmpId());
 			ctx.result(token);
-		}catch (IncorrectCredentialsException e) {
+		} catch (IncorrectCredentialsException e) {
 			ctx.status(404);
 			ctx.result(e.getMessage());
 		}
