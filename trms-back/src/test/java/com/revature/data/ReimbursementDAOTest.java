@@ -5,6 +5,7 @@ import com.revature.utils.DAOFactory;
 import org.junit.jupiter.api.Test;
 
 import com.revature.beans.Employee;
+import com.revature.beans.GradingFormat;
 import com.revature.beans.Reimbursement;
 import com.revature.data.postgres.EmployeePostgres;
 import com.revature.data.postgres.ReimbursementPostgres;
@@ -20,14 +21,16 @@ public class ReimbursementDAOTest {
 	private EmployeeDAO empDao = new EmployeePostgres();
 	
 	@Test
-	public void createTest() throws Exception {
+	public void createTest() {
 		Reimbursement reim = new Reimbursement();
 		Employee emp = new Employee();
-		String sDate = "2000/03/21";
-		Date date1=new SimpleDateFormat("yyyy/mm/dd").parse(sDate);
-		
+		GradingFormat grade = new GradingFormat();
+		grade.setFormatId(2);
+		emp.setEmpId(80);
+		reim.setGradingFormat(grade);
 		reim.setRequestor(emp);
 		int generatedId = reqDao.create(reim);
+		System.out.println(reim.getReqId());
 		assertNotEquals(0,generatedId);
 	}
 }
