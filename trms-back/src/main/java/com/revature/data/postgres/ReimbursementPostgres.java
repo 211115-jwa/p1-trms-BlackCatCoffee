@@ -102,7 +102,9 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 			while (resultSet.next()) {
 				request = new Reimbursement();
 				request.setReqId(resultSet.getInt("req_id"));
-				request.setRequestor(request.getRequestor());
+				Employee emp = new Employee();
+				emp.setEmpId(resultSet.getInt("emp_id"));
+				emp.setRole(resultSet.getInt("role_id"));
 				request.setEventDate(resultSet.getDate("event_date").toLocalDate());
 				request.setEventTime(resultSet.getTime("event_time").toLocalTime());
 				request.setLocation(resultSet.getString("location"));

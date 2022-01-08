@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.revature.beans.Employee;
 import com.revature.beans.GradingFormat;
 import com.revature.beans.Reimbursement;
+import com.revature.beans.Status;
 import com.revature.data.postgres.EmployeePostgres;
 import com.revature.data.postgres.ReimbursementPostgres;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,10 +16,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 public class ReimbursementDAOTest {
+	private static EventTypeDAO eventTypeDao = DAOFactory.getEventTypeDAO();
+	private static GradingFormatDAO gradFormatDao = DAOFactory.getGradingFormatDAO();
+	private static StatusDAO statusDao = DAOFactory.getStatusDAO();
 	private static ReimbursementDAO reqDao = DAOFactory.getReimbursementDAO();
-	private EmployeeDAO empDao = new EmployeePostgres();
+	private static CommentDAO commentDao = DAOFactory.getCommentDAO();
+	private static EmployeeDAO empDao = DAOFactory.getEmployeeDAO();
 	
 	@Test
 	public void createTest() {
@@ -38,7 +44,29 @@ public class ReimbursementDAOTest {
 	public void getByIdTest() {
 		int idInput = 2;
 		Reimbursement reimOutput = reqDao.getById(idInput);
-		System.out.println(reimOutput.getReqId());
 		assertEquals(2,reimOutput.getReqId());
+	}
+	
+	/*@Test
+	public void getAllTest() {
+		Set<Reimbursement> reimbursements = reqDao.getAll();
+		assertNotNull(reimbursements);
+	}*/
+	
+	
+	@Test
+	public void getByRequestorTest() {
+		Employee emp = new Employee();
+		emp.setEmpId(40);
+		Set<Reimbursement> getByRequestor = reqDao.getByRequestor(emp);
+		assertNotNull(getByRequestor);
+	}
+	
+	
+	@Test
+	public void getByStatusTest() {
+		Status state = statusDao.getById(4);
+		Set<Reimbursement> getByStatus = reqDao.getByStatus(state);
+		assertNotNull(getByStatus);
 	}
 }
