@@ -104,7 +104,6 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 				request.setReqId(resultSet.getInt("req_id"));
 				Employee emp = new Employee();
 				emp.setEmpId(resultSet.getInt("emp_id"));
-				emp.setRole(resultSet.getInt("role_id"));
 				request.setEventDate(resultSet.getDate("event_date").toLocalDate());
 				request.setEventTime(resultSet.getTime("event_time").toLocalTime());
 				request.setLocation(resultSet.getString("location"));
@@ -198,21 +197,22 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 
 	@Override
 	public void update(Reimbursement dataToUpdate) {
-		try (Connection conn = connUtil.getConnection()) {
+		String sql="update reimbursement set"
+				+ " emp_id=?,"
+				+ " event_date=?,"
+				+ " event_time=?,"
+				+ " location=?,"
+				+ " description=?,"
+				+ " cost=?,"
+				+ " grading_format_id=?,"
+				+ " event_type_id=?,"
+				+ " status_id=?,"
+				+ " submitted_at=?"
+				+ " where req_id=?";
+		try (Connection conn = connUtil.getConnection();
+				PreparedStatement pStmt = conn.prepareStatement(sql)) {
 			conn.setAutoCommit(false);
-			String sql="update reimbursement set"
-					+ " emp_id=?,"
-					+ " event_date=?,"
-					+ " event_time=?,"
-					+ " location=?,"
-					+ " description=?,"
-					+ " cost=?,"
-					+ " grading_format_id=?,"
-					+ " event_type_id=?,"
-					+ " status_id=?,"
-					+ " submitted_at=?"
-					+ " where req_id=?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
 			pStmt.setInt(1, dataToUpdate.getRequestor().getEmpId());
 			pStmt.setDate(2, Date.valueOf(dataToUpdate.getEventDate()));
 			pStmt.setTime(3, Time.valueOf(dataToUpdate.getEventTime()));
@@ -223,9 +223,10 @@ public class ReimbursementPostgres implements ReimbursementDAO {
 			pStmt.setInt(8, dataToUpdate.getEventType().getEventId());
 			pStmt.setInt(9, dataToUpdate.getStatus().getStatusId());
 			pStmt.setTimestamp(10, Timestamp.valueOf(dataToUpdate.getSubmittedAt()));
-			pStmt.setInt(10, dataToUpdate.getReqId());
+			pStmt.setInt(11, dataToUpdate.getReqId());
 			
 			int rowsAffected = pStmt.executeUpdate();
+			
 			if (rowsAffected <= 1) {
 				conn.commit();
 			} else {

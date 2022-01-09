@@ -8,14 +8,10 @@ import com.revature.beans.Employee;
 import com.revature.beans.GradingFormat;
 import com.revature.beans.Reimbursement;
 import com.revature.beans.Status;
-import com.revature.data.postgres.EmployeePostgres;
-import com.revature.data.postgres.ReimbursementPostgres;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.Set;
 
 public class ReimbursementDAOTest {
@@ -57,9 +53,19 @@ public class ReimbursementDAOTest {
 	@Test
 	public void getByRequestorTest() {
 		Employee emp = new Employee();
-		emp.setEmpId(40);
+		emp.setEmpId(41);
 		Set<Reimbursement> getByRequestor = reqDao.getByRequestor(emp);
 		assertNotNull(getByRequestor);
+	}
+	
+	@Test
+	public void updateTest() {
+		Reimbursement reim = reqDao.getById(3);
+		reim.setRequestor(empDao.getById(40));
+		reim.setCost(300.00);
+		reqDao.update(reim);
+		System.out.println(reim.getCost());
+		assertEquals(300.00,reim.getCost());
 	}
 	
 	
