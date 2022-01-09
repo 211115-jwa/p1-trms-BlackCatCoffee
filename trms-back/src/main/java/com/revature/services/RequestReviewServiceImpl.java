@@ -60,7 +60,7 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 		}else if (status.equals(statusDao.getById(5))) {
 			status.setStatusId(6);
 		}else if (status.equals(statusDao.getById(6))) {
-			status.setStatusId(3);
+			status.setStatusId(7);
 		}
 		request.setStatus(status);
 
@@ -84,6 +84,14 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 	public void rejectRequest(Reimbursement request, Comment comment) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public Reimbursement updateCostBenCo(Reimbursement request) {
+		if(request.getStatus().equals(statusDao.getById(6))) {
+			reqDao.update(request);
+		}
+		return request;
 	}
 
 	

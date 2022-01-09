@@ -103,4 +103,15 @@ public class RequestsController {
 			ctx.result("Invalid access");
 		}
 	}
+	
+	public static void benCoChangeCost(Context ctx) {
+		Reimbursement reim = ctx.bodyAsClass(Reimbursement.class);
+		if(reim != null) {
+			Reimbursement updateReim = reqRevServ.updateCostBenCo(reim);
+			ctx.json(updateReim);
+		}else {
+			ctx.status(404);
+			ctx.result("invalid access");
+		}
+	}
 }

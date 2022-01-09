@@ -6,6 +6,7 @@ values
 	('Pending Approval','Direct Supervisor'),
 	('Pending Approval','Department Head'),
 	('Pending Approval','BenCo Coordinator'),
+	('Pending Pass','BenCo Coordinator'),
 	('Declined','Direct Supervisor'),
 	('Declined','Department Head'),
 	('Declined','BenCo Coordinator');
@@ -15,7 +16,7 @@ values
 	('Department Head'),
 	('Employee'),
 	('Direct Supervisor'),
-	('BenCo representative');
+	('BenCo Coordinator');
 	
 insert into grading_format (format_id, format_name, example)
 values
@@ -54,7 +55,7 @@ values
 	('Kimberly', 'Cometson', 'KCometson', 'IXhmvXh5', 3, 331),
 	('Ben', 'company', 'BenCo', 'IXhfefemvXh5', 4, 331);
 	
-select * from employee where role_id=3;
+
 
 update employee set supervisor_id=1,dept_id=1 where emp_id=1;
 update employee set supervisor_id=2,dept_id=2 where emp_id=2;
@@ -154,32 +155,6 @@ insert into employee (first_name, last_name, username, passwd, role_id, funds, s
 insert into employee (first_name, last_name, username, passwd, role_id, funds, supervisor_id, dept_id) values ('Jennie', 'Goodrick', 'jgoodricke', '1RpOB7jOLt7Z', 2, 690, 10, 5);
 
 
-	
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (57, '10/26/2021', '10:16 PM', '856 Eagle Crest Parkway', 'luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat', 689.94, 1, 6, 3);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (42, '10/15/2021', '8:41 PM', '9 Rieder Crossing', 'non lectus aliquam sit amet diam in magna bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu', 465.29, 2, 1, 9);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (58, '1/22/2021', '11:22 AM', '56474 Del Mar Parkway', 'id ornare imperdiet sapien urna pretium nisl ut volutpat sapien', 247.82, 2, 5, 5);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (38, '1/16/2021', '4:01 PM', '209 Beilfuss Crossing', 'quam fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet', 181.03, 2, 3, 2);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (80, '4/30/2021', '11:39 AM', '8411 Banding Center', 'donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut', 843.94, 1, 2, 2);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (55, '4/19/2021', '10:40 PM', '251 Dawn Court', 'morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in', 271.98, 2, 5, 9);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (41, '1/27/2021', '11:26 PM', '070 Elka Place', 'quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc', 882.01, 1, 5, 4);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (64, '4/30/2021', '7:00 AM', '01 Stuart Way', 'mattis egestas metus aenean fermentum donec ut mauris eget massa tempor', 378.44, 1, 2, 6);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (61, '1/27/2021', '8:15 PM', '9123 Morning Terrace', 'quam turpis adipiscing lorem vitae mattis nibh ligula nec sem', 516.58, 2, 2, 6);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (79, '6/14/2021', '6:59 AM', '7032 Riverside Crossing', 'integer pede justo lacinia eget tincidunt eget tempus vel pede morbi porttitor lorem id ligula', 630.5, 1, 4, 3);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (23, '8/1/2021', '12:21 PM', '15 Hermina Road', 'iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut', 406.59, 2, 4, 9);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (42, '1/14/2021', '10:06 AM', '55247 Sage Way', 'nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante', 724.5, 2, 1, 1);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (19, '1/15/2021', '8:25 PM', '6 Lillian Junction', 'sed lacus morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed', 205.12, 2, 1, 3);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (36, '12/31/2021', '1:50 PM', '5401 Delladonna Junction', 'quis justo maecenas rhoncus aliquam lacus morbi quis tortor id', 642.54, 1, 3, 7);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (46, '1/5/2021', '8:23 PM', '4 Elka Junction', 'ut suscipit a feugiat et eros vestibulum ac est lacinia', 224.79, 2, 6, 2);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (60, '4/28/2021', '7:51 AM', '8770 Towne Terrace', 'et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo', 439.8, 2, 6, 4);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (58, '6/1/2021', '2:04 PM', '610 Messerschmidt Street', 'vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta', 339.98, 2, 4, 7);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (22, '11/17/2021', '9:11 AM', '58 Ruskin Way', 'vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget', 675.11, 1, 1, 1);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (82, '3/5/2021', '4:03 PM', '734 Melby Terrace', 'est phasellus sit amet erat nulla tempus vivamus in felis eu sapien', 981.68, 2, 4, 9);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (49, '11/26/2021', '6:37 PM', '10212 Russell Point', 'sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia', 350.67, 2, 6, 8);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (24, '3/14/2021', '5:30 AM', '30 Elmside Plaza', 'malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit proin', 166.47, 1, 5, 7);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (41, '4/22/2021', '9:40 PM', '50 Loftsgordon Park', 'mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede ullamcorper', 612.55, 1, 4, 5);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (39, '6/13/2021', '11:28 PM', '79 Fair Oaks Hill', 'faucibus orci luctus et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat dui', 806.47, 1, 3, 8);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (67, '1/20/2021', '11:15 PM', '54684 Pennsylvania Place', 'pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus in', 795.73, 2, 1, 1);
-insert into reimbursement (emp_id, event_date, event_time, location, description, cost, grading_format_id, event_type_id, status_id) values (48, '1/2/2021', '12:51 AM', '3439 Luster Junction', 'ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi quis tortor id', 235.05, 2, 6, 7);
 
 insert into comment (req_id, approver_id, comment_text, sent_at) values (1, 5, 'Gorilla gorilla', '5/30/2021');
 insert into comment (req_id, approver_id, comment_text, sent_at) values (2, 1, 'Taxidea taxus', '7/20/2021');
@@ -206,4 +181,3 @@ insert into comment (req_id, approver_id, comment_text, sent_at) values (22, 1, 
 insert into comment (req_id, approver_id, comment_text, sent_at) values (23, 4, 'Grus antigone', '5/25/2021');
 insert into comment (req_id, approver_id, comment_text, sent_at) values (24, 5, 'Martes americana', '7/13/2021');
 insert into comment (req_id, approver_id, comment_text, sent_at) values (25, 2, 'Castor canadensis', '10/11/2021');
-

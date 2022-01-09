@@ -9,7 +9,9 @@ import com.revature.exceptions.IncorrectCredentialsException;
 
 public interface RequestReviewService {
 	
-	public Employee logIn(String username, String password) ;;
+	public Reimbursement updateCostBenCo(Reimbursement request);
+	
+	
 	/**
 	 * Returns the Set of reimbursement requests that are
 	 * currently pending approval from the specified Employee.

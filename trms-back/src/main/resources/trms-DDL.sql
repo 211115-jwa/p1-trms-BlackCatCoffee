@@ -63,7 +63,8 @@ create table reimbursement (
 	cost real not null,
 	grading_format_id integer not null,
 	event_type_id integer not null,
-	status_id integer not null);
+	status_id integer not null,
+	submitted_at timestamp);
 
 
 
