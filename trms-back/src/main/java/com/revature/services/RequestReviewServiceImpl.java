@@ -82,7 +82,21 @@ public class RequestReviewServiceImpl implements RequestReviewService {
 
 	@Override
 	public void rejectRequest(Reimbursement request, Comment comment) {
-		// TODO Auto-generated method stub
+		Status status = request.getStatus();
+		if (status.equals(statusDao.getById(4))) {
+			status.setStatusId(7);
+			comment.getCommentText();
+			commentDao.create(comment);
+		}else if (status.equals(statusDao.getById(5))) {
+			status.setStatusId(8);
+			comment.getCommentText();
+			commentDao.create(comment);
+		}else if (status.equals(statusDao.getById(6))) {
+			status.setStatusId(9);
+			comment.getCommentText();
+			commentDao.create(comment);
+		}
+		request.setStatus(status);
 
 	}
 

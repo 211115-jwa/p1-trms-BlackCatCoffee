@@ -32,13 +32,28 @@ public class EmployeeController {
 		}
 	}
 	
+	public static void getUserById(Context ctx) {
+		try {
+			int empId = Integer.parseInt(ctx.pathParam("empId"));
+			Employee emp = empServ.getEmployeeById(empId);
+			if(emp !=null) {
+				ctx.json(emp);
+			}else {
+				ctx.status(404);
+			}
+		}catch (NumberFormatException e) {
+			ctx.status(400);
+			ctx.result("Employee ID must be a numeric value");
+		}
+	}
+	
 	public static void logIn(Context ctx) {
 		Map<String,String> credentials = ctx.bodyAsClass(Map.class);
 		String username = credentials.get("username");
 		String password = credentials.get("password");
 		
 		try {
-			Employee emp = reqRevServ.logIn(username, password);
+			Employee emp = empServ.logIn(username, password);
 			String token = Integer.toString(emp.getEmpId());
 			ctx.result(token);
 		} catch (IncorrectCredentialsException e) {
