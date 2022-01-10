@@ -9,7 +9,7 @@ checkLogin().then(setupNav);
 async function checkLogin(){
     let empId = localStorage.getItem('Token');
     if(empId) {
-        let response = await fetch(trmsAppUrl + 'requests/'+empId+ '/auth');
+        let response = await fetch(trmsAppUrl + 'employees/'+empId+ '/auth');
         if(response.status === 200){
             loggedInEmployee = await response.json();
         }
@@ -21,8 +21,7 @@ function setupNav() {
 
     if(!loggedInEmployee) {
         nav.innerHTML = `<span id="navLeft">
-        <a href="requestform.html"><b>Submit Request</b></a>
-        <a href="myrequests.html">Employee Requests</a>
+        <a href="requests.html"><b>Request Form</b></a>
         <a hidden>Employee Requests</a>
         </span>
         <span id="navRight">
@@ -32,11 +31,13 @@ function setupNav() {
         document.getElementById('login').addEventListener('click',openLogin);
     }else if (loggedInEmployee.role.name === 'Employee'){
         nav.innerHTML = `<span id="navLeft">
-        <a href="requestform.html"><b>Submit Request</b></a>
+        <a href="requests.html"><b>Request Form</b></a>
         <a href="myrequests.html">My Requests</a>
         <a hidden>Employee Requests</a>
         </span>
+        
         <span id="navRight">
+        
         <button id="logout">Log Out</button>
         </span>`;
         
@@ -48,11 +49,11 @@ function setupNav() {
         <a hidden>Employee Requests</a>
         </span>
         <span id="navRight">
-        <a id="manageUser" href="manage.html">${loggedInPerson.username}</a>
+        <a id="manageUser" href="manage.html">${loggedInEmployee.username}</a>
         <button id="logout">Log Out</button>
         <button id="veiwRequests">View Requests</button>
         </span>`;
-        document.getElementById('veiwRequests').addEventListener('click',veiwRequest);
+        
         document.getElementById('logout').addEventListener('click',logOut);
     }else if (loggedInEmployee.role.name === 'Department Head') {
         nav.innerHTML = `<span id="navLeft">
@@ -61,24 +62,21 @@ function setupNav() {
         <a hidden>Employee Requests</a>
         </span>
         <span id="navRight">
-        <a id="manageUser" href="manage.html">${loggedInPerson.username}</a>
+        <a id="manageUser" href="manage.html">${loggedInEmployee.username}</a>
         <button id="logout">Log Out</button>
         <button id="veiwRequests">View Requests</button>
         </span>`;
-        document.getElementById('veiwRequests').addEventListener('click',veiwRequest);
+        
         document.getElementById('logout').addEventListener('click',logOut);
     }else if (loggedInEmployee.role.name === 'BenCo Coordinator') {
         nav.innerHTML = `<span id="navLeft">
         <a href="altercost.html"><b>Cost Covered</b></a>
-        <a href="myrequests.html.html">My Requests</a>
         <a hidden>Employee Requests</a>
         </span>
         <span id="navRight">
-        <a id="manageUser" href="manage.html">${loggedInPerson.username}</a>
+        <a id="manageUser" href="manage.html">${loggedInEmployee.username}</a>
         <button id="logout">Log Out</button>
-        <button id="veiwRequests">View Requests</button>
         </span>`;
-        document.getElementById('veiwRequests').addEventListener('click',veiwRequest);
         document.getElementById('logout').addEventListener('click',logOut);
     
 }
@@ -121,7 +119,7 @@ async function submitLogin() {
         'password':password
     };
 
-    let response = await fetch(trmsAppUrl + 'employee/auth',{method:'POST',body:JSON.stringify(credentials)});
+    let response = await fetch(trmsAppUrl + 'employees/auth',{method:'POST',body:JSON.stringify(credentials)});
     if(response.status===200) {
         let token = await response.text();
         localStorage.setItem('Token',token);
@@ -130,6 +128,10 @@ async function submitLogin() {
         let msg = await response.text();
         alert(msg);
     }
+}
+
+function myrequests(){
+    
 }
 
 function logOut() {

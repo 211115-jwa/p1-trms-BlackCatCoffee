@@ -34,7 +34,7 @@ public class TRMSApp {
 		
 		app.routes(() -> {
 			// localhost:8080/
-			path("/requests", () -> {
+			path("/myrequests", () -> {
 				post(RequestsController::submitReimbursementRequest);
 				path("/requestor/{id}", () -> {
 					get(RequestsController::getRequestsByRequestor);

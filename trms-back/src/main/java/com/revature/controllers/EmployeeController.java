@@ -23,7 +23,7 @@ public class EmployeeController {
 		try {
 			newEmp = empServ.register(newEmp);
 			Map<String,Integer> newIdMap = new HashMap<>();
-			newIdMap.put("empId", newEmp.getEmpId());
+			newIdMap.put("id", newEmp.getEmpId());
 			ctx.status(HttpCode.CREATED);
 			ctx.json(newIdMap);
 		}catch (UsernameAlreadyExistsException e) {
@@ -34,7 +34,7 @@ public class EmployeeController {
 	
 	public static void getUserById(Context ctx) {
 		try {
-			int empId = Integer.parseInt(ctx.pathParam("empId"));
+			int empId = Integer.parseInt(ctx.pathParam("id"));
 			Employee emp = empServ.getEmployeeById(empId);
 			if(emp !=null) {
 				ctx.json(emp);
@@ -65,7 +65,7 @@ public class EmployeeController {
 	public static void checkLogin(Context ctx) {
 		String token = ctx.body();
 		try {
-			int empId = Integer.parseInt(ctx.pathParam("empId"));
+			int empId = Integer.parseInt(ctx.pathParam("id"));
 			Employee loggedInEmployee = empServ.getEmployeeById(empId);
 			if (loggedInEmployee!=null) {
 				ctx.json(loggedInEmployee);
