@@ -2,7 +2,8 @@ getMyRequests();
 //getPetsAjax();
 
 async function getMyRequests() {
-    let response = await fetch(trmsAppUrl + '/myrequests/requestor/'+ empId );
+    let empId = localStorage.getItem('Token');
+    let response = await fetch(trmsAppUrl + 'myrequests/requestor/' + empId);
     // let response = await fetch('http://localhost:8080/pets/8',{method:'PUT', body:JSON.stringify(petObj)});
     
     if (response.status === 200) {
